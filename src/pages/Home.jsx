@@ -1171,7 +1171,7 @@ const Home = () => {
   return (
     <div>
       {/* nav */}
-      <nav className="fixed top-0 z-50 flex items-center justify-between w-full h-24 px-4 sm:px-8 md:px-14 lg:px-24 py-4 font-medium text-black bg-white shadow-md">
+      <nav className="fixed top-0 z-50 flex items-center justify-between w-full h-[100px] px-4 sm:px-8 md:px-14 lg:px-32 py-4 font-medium text-black bg-white shadow-md">
         {/* Logo - Left */}
         <div className="flex items-center">
           <img
@@ -1271,11 +1271,11 @@ const Home = () => {
       <div className="min-h-screen bg-white">
         {/* Hero Section with Video Background */}
         <div className="relative h-screen w-full overflow-hidden flex flex-col justify-center items-center">
-          {/* Background video - full size on all devices */}
+          {/* Background video - Full width and height on all devices */}
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
             <iframe
-              className="object-cover w-full h-full"
+              className="w-full h-full object-cover"
               src="https://www.youtube.com/embed/hlWiI4xVXKY?autoplay=1&mute=1&loop=1&playlist=hlWiI4xVXKY&controls=0&modestbranding=1&showinfo=0"
               title="YouTube Video Background"
               frameBorder="0"
@@ -1284,72 +1284,72 @@ const Home = () => {
             ></iframe>
           </div>
 
-          {/* Main content */}
-          <div className="relative z-20 w-full max-w-6xl px-4 text-center flex flex-col h-full justify-center">
-            <div>
-              <h2 className="mb-4 text-2xl sm:text-3xl md:text-4xl font-medium text-white">
-                Welcome to
-              </h2>
-              <h1 className="mb-12 text-4xl sm:text-5xl md:text-6xl font-bold text-[#F4AA41]">
-                World's Largest Health & Wellness Universe
-              </h1>
+          {/* Main content - Adaptive spacing and font sizes */}
+          <div className="relative z-20 w-full max-w-6xl px-4 text-center flex flex-col justify-center h-full">
+            <h2 className="mb-2 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white">
+              Welcome to
+            </h2>
+            <h1 className="mb-6 sm:mb-8 md:mb-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F4AA41] leading-tight">
+              World's Largest Health & Wellness Universe
+            </h1>
 
-              {/* Navigation tabs - white rounded buttons */}
-              <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    className="relative py-3 px-5 text-gray-800 bg-white rounded-md font-medium text-sm sm:text-base transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:bg-[#f6d5a7] focus:outline-none
-              after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-0 after:h-[2.5px] after:bg-[#b77f31] hover:after:w-full after:transition-all after:duration-300 hover:rounded-t-md hover:rounded-b-none"
-                    onClick={() => {
-                      setActiveTab(item.id);
-                      scrollToSection(item.id);
-                    }}
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
+            {/* Navigation Tabs - Smaller on mobile with tighter spacing */}
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-3 max-w-full px-1 sm:px-4 md:px-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  className="relative py-1 px-2 sm:py-2 sm:px-4 md:py-3 md:px-5 text-gray-800 bg-white rounded-md font-medium text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:bg-[#f6d5a7] focus:outline-none
+                after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-0 after:h-[2px] after:bg-[#b77f31] hover:after:w-full after:transition-all after:duration-300 hover:rounded-t-md hover:rounded-b-none"
+                  onClick={() => {
+                    setActiveTab(item.id);
+                    scrollToSection(item.id);
+                  }}
+                >
+                  {item.name}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Tagline at the bottom */}
-          <div className="absolute bottom-16 left-0 right-0 z-20 text-center">
-            <p className="text-lg md:text-3xl text-white font-medium">
+          {/* Tagline - Adjusted for mobile */}
+          <div className="absolute bottom-10 sm:bottom-12 md:bottom-14 left-0 right-0 z-20 text-center px-4">
+            <p className="text-sm sm:text-base md:text-lg lg:text-2xl xl:text-3xl text-white font-medium">
               Empowering you to manifest your best life.
             </p>
           </div>
 
-          {/* Curved transition - two halves with rounded corners that overlap the video */}
+          {/* Curved transition */}
           <div className="absolute bottom-0 left-0 right-0 w-full z-10">
             <div className="flex w-full">
-              <div className="w-1/2 h-6 bg-white rounded-tr-full"></div>
-              <div className="w-1/2 h-6 bg-white rounded-tl-full"></div>
+              <div className="w-1/2 h-4 sm:h-6 bg-white rounded-tr-full"></div>
+              <div className="w-1/2 h-4 sm:h-6 bg-white rounded-tl-full"></div>
             </div>
           </div>
         </div>
 
-        <div className="relative bg-white text-center w-full overflow-hidden">
+        {/* Services Section */}
+        <div id="counselling" className="relative bg-white text-center w-full overflow-hidden px-4">
           {/* Title with Background Image */}
-          <div className="relative py-10 flex justify-center items-center">
+          <div className="relative py-6 sm:py-8 md:py-10 lg:py-12 flex justify-center items-center">
             <img
               src={Vector}
               alt="Background Infinity"
-              className="absolute w-40 h-32 object-contain"
+              className="absolute w-16 h-16 sm:w-24 sm:h-24 md:w-72 md:h-24 lg:w-[330px] lg:h-24 xl:w-[350px] xl:h-28 object-contain"
             />
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 z-10">
+            <h2 className="text-base sm:text-xl md:text-3xl lg:text-[38px] xl:text-[36px] font-bold text-gray-900 z-10 max-w-[90%] md:max-w-2xl lg:max-w-3xl mx-auto">
               Our Counselling Services
             </h2>
           </div>
 
           {/* Subtitle */}
-          <p className="text-xl font-semibold text-gray-900">
-            "Talk it out. Heal within”
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900">
+            "Talk it out. Heal within"
           </p>
-          <p className="text-lg text-gray-700 mt-2 mb-8">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 mt-2 mb-6 sm:mb-8 max-w-[90%] md:max-w-2xl lg:max-w-3xl mx-auto">
             Professional therapies for your mind, heart, and soul.
           </p>
         </div>
+
       </div>
 
 
@@ -1664,7 +1664,7 @@ const Home = () => {
           The soul of WeEVOLVE
         </p>
       </div>
-      <div className="flex flex-col md:flex-row w-full">
+      <div className="flex flex-col md:flex-row w-full h-[924px]">
         {/* Left Text Side */}
         <div className="bg-[#F4AA41] flex flex-col text-left justify-center p-6 md:p-12 md:w-1/2 w-full rounded-tr-none md:rounded-tr-3xl">
           <p className="text-black pl-10 text-base md:text-3xl mb-6">
