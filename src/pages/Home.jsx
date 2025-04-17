@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { FaFacebook, FaLinkedin, FaYoutube, FaInstagram, FaPinterest, FaXTwitter, FaThreads } from 'react-icons/fa6';
 
-import { Menu, X, Globe, Play, Facebook, Linkedin, Instagram, Youtube, MapPin, Phone} from "lucide-react";
+import { Menu, X, Globe, Play, Facebook, Linkedin, Instagram, Youtube, MapPin, Phone } from "lucide-react";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import logo from '../assets/evolve.png'
@@ -10,7 +10,7 @@ import logo from '../assets/evolve.png'
 import footer from '../assets/footer.png'
 import Vector from "../assets/Vector.png";
 import Vector2 from "../assets/Vector2.png";
-import wellness from "../assets/well.mov";
+// import wellness from "../assets/well.mov";
 import Astrology from "../assets/service/Astrology.png";
 import dance from "../assets/service/dance.png";
 import chakra from "../assets/service/chakra.png";
@@ -790,8 +790,8 @@ const Home = () => {
       image: pramodjoshi
     },
     {
-      name: "John Smith",
-      title: "Head of Therapy",
+      name: "Mr.Raj Banglore",
+      title: "CMO",
       image: raj
     },
     {
@@ -1126,7 +1126,7 @@ const Home = () => {
     },
     {
       id: 7,
-      name: 'Sanjay',
+      name: 'Mr.Sanjay Badhwar',
       role: 'Admintration',
       image: sanjay
     },
@@ -1274,25 +1274,23 @@ const Home = () => {
           {/* Background video - full size on all devices */}
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
-            <video
+            <iframe
               className="object-cover w-full h-full"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src={wellness} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              src="https://www.youtube.com/embed/hlWiI4xVXKY?autoplay=1&mute=1&loop=1&playlist=hlWiI4xVXKY&controls=0&modestbranding=1&showinfo=0"
+              title="YouTube Video Background"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            ></iframe>
           </div>
 
           {/* Main content */}
           <div className="relative z-20 w-full max-w-6xl px-4 text-center flex flex-col h-full justify-center">
             <div>
-              <h2 className="mb-4 text-2xl font-medium text-white">
+              <h2 className="mb-4 text-2xl sm:text-3xl md:text-4xl font-medium text-white">
                 Welcome to
               </h2>
-              <h1 className="mb-12 text-4xl sm:text-5xl md:text-6xl font-bold text-orange-400">
+              <h1 className="mb-12 text-4xl sm:text-5xl md:text-6xl font-bold text-[#F4AA41]">
                 World's Largest Health & Wellness Universe
               </h1>
 
@@ -1302,7 +1300,7 @@ const Home = () => {
                   <button
                     key={item.id}
                     className="relative py-3 px-5 text-gray-800 bg-white rounded-md font-medium text-sm sm:text-base transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:bg-[#f6d5a7] focus:outline-none
-      after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-0 after:h-[2.5px] after:bg-[#b77f31] hover:after:w-full after:transition-all after:duration-300 hover:rounded-t-md hover:rounded-b-none"
+              after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-0 after:h-[2.5px] after:bg-[#b77f31] hover:after:w-full after:transition-all after:duration-300 hover:rounded-t-md hover:rounded-b-none"
                     onClick={() => {
                       setActiveTab(item.id);
                       scrollToSection(item.id);
@@ -1325,17 +1323,13 @@ const Home = () => {
           {/* Curved transition - two halves with rounded corners that overlap the video */}
           <div className="absolute bottom-0 left-0 right-0 w-full z-10">
             <div className="flex w-full">
-              {/* Left half with top-right rounded corner */}
               <div className="w-1/2 h-6 bg-white rounded-tr-full"></div>
-
-              {/* Right half with top-left rounded corner */}
               <div className="w-1/2 h-6 bg-white rounded-tl-full"></div>
             </div>
           </div>
         </div>
 
         <div className="relative bg-white text-center w-full overflow-hidden">
-
           {/* Title with Background Image */}
           <div className="relative py-10 flex justify-center items-center">
             <img
@@ -1357,6 +1351,7 @@ const Home = () => {
           </p>
         </div>
       </div>
+
 
       {/* Counselling */}
       <div className="w-full py-2 bg-white">
@@ -1756,10 +1751,10 @@ const Home = () => {
                       className="object-cover w-full h-64"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-center text-purple-700">
+                  <h3 className="text-xl font-semibold text-center text-black">
                     {profile.name}
                   </h3>
-                  <p className="text-sm text-center text-purple-600">
+                  <p className="text-sm text-center text-black">
                     {profile.title}
                   </p>
                 </motion.div>
@@ -2131,28 +2126,28 @@ const Home = () => {
                 <span>WeEvolve.ai</span>
               </div>
               <div className="flex space-x-4">
-  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
-    <Facebook size={20} />
-  </a>
-  <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
-    <Linkedin size={20} />
-  </a>
-  <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
-    <Youtube size={20} />
-  </a>
-  <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
-    <Instagram size={20} />
-  </a>
-  <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
-    <FaPinterest size={20} />
-  </a>
-  <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
-    <X size={20} />
-  </a>
-  <a href="https://www.threads.net/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
-    <FaThreads size={20} />
-  </a>
-</div>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
+                  <Facebook size={20} />
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
+                  <Linkedin size={20} />
+                </a>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
+                  <Youtube size={20} />
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
+                  <Instagram size={20} />
+                </a>
+                <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
+                  <FaPinterest size={20} />
+                </a>
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
+                  <X size={20} />
+                </a>
+                <a href="https://www.threads.net/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
+                  <FaThreads size={20} />
+                </a>
+              </div>
 
             </div>
 
