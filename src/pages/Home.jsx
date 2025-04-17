@@ -1337,7 +1337,7 @@ const Home = () => {
               className="absolute w-16 h-16 sm:w-24 sm:h-24 md:w-72 md:h-24 lg:w-[330px] lg:h-24 xl:w-[350px] xl:h-28 object-contain"
             />
             <h2 className="text-base sm:text-xl md:text-3xl lg:text-[38px] xl:text-[36px] font-bold text-gray-900 z-10 max-w-[90%] md:max-w-2xl lg:max-w-3xl mx-auto">
-              Our Counselling Services
+              Our Counselling Service
             </h2>
           </div>
 
