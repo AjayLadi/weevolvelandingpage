@@ -62,6 +62,8 @@ import user9 from "../assets/user/u9.png";
 import user10 from "../assets/user/u10.png";
 import user11 from "../assets/user/u11.png";
 import user12 from "../assets/user/u12.png";
+import user13 from "../assets/user/u13.png";
+import user14 from "../assets/user/u14.png";
 
 import dr from "../assets/product/dr.png";
 import netures from "../assets/product/netures.png";
@@ -784,31 +786,31 @@ const Home = () => {
       id: 1,
       title: "Retreat",
       image: cr1,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      description: "Escape, unwind, and reconnect with yourself in soul-nourishing nature.",
     },
     {
       id: 2,
       title: "Festivals",
       image: cr4,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      description: "Celebrate wellness, community, and conscious living through experiences.",
     },
     {
       id: 3,
       title: "Tourism",
       image: cr2,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      description: "Travel with purpose—curated journeys that heal, inspire, and transform.",
     },
     {
       id: 4,
       title: "Courses",
       image: cr3,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      description: "Empower your mind and spirit with guided learning for holistic growth.",
     },
     {
       id: 5,
       title: "Corporate Wellness",
       image: cr5,
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      description: "Fostering mindful, healthy workplaces through tailored wellness solutions.",
     }
   ];
 
@@ -820,13 +822,16 @@ const Home = () => {
         alt={title}
         className="w-full  object-cover"
       />
-      <div className="p-4">
-        <div className="flex items-center mb-2">
-          <span className="text-amber-500 text-lg font-bold mr-2">∞ weEvolve</span>
-          <h3 className="font-bold text-lg">{title}</h3>
+      <div className="p-0 text-center">
+        <div className="flex flex-col items-center mb-0">
+          <h3 className="font-bold text-lg sm:text-xl md:text-2xl"><span className="text-amber-500 text-xl sm:text-2xl md:text-3xl font-bold mb-0">weEvolve </span>{title}</h3>
         </div>
-        <p className="text-gray-600 text-left text-sm">{description}</p>
+        <p className="p-1 pb-2 md:p-1 mb-0 md:mb-1 text-gray-600 text-sm sm:text-base md:text-base leading-[1.2] sm:leading-relaxed">
+          {description}
+        </p>
+
       </div>
+
     </div>
   );
 
@@ -845,13 +850,13 @@ const Home = () => {
       image: pramodjoshi
     },
     {
-      name: "Mr.Raj Banglore",
-      title: "CMO",
+      name: "Raj Bangalore",
+      title: "Chief Marketing Officer",
       image: raj
     },
     {
-      name: "Mr. Rajeev Jaiswal",
-      title: "CTGO",
+      name: "Rajeev Jaiswal",
+      title: "Chief Technology Officer",
       image: rajeev
     },
   ];
@@ -916,6 +921,16 @@ const Home = () => {
 
   //  review
 
+  const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prevCount => prevCount >= 999 ? 1 : prevCount + 1);
+    }, 500); // Change number every half second
+
+    return () => clearInterval(interval);
+  }, []);
+
   const [activeTexts, setActiveTexts] = useState({});
   const [scrollPositions, setScrollPositions] = useState({
     row1: 0,
@@ -948,7 +963,9 @@ const Home = () => {
     9: user9,
     10: user10,
     11: user11,
-    12: user12
+    12: user12,
+    13: user13,
+    14: user14
   };
 
   // Constants for scrolling animation
@@ -1070,7 +1087,7 @@ const Home = () => {
 
         {testimonialTexts[itemNum] && (
           <div
-            className={`absolute -left-8 sm:-left-10 ${isUp ? 'top-3' : 'bottom-3'} bg-white px-2 sm:px-3 py-1 border border-black rounded-md shadow-md text-xs sm:text-sm md:text-base font-bold z-50 
+            className={`absolute -left-8 sm:-left-10 ${isUp ? 'top-3' : 'bottom-3'} bg-white px-2 sm:px-3 py-2 border-2  border-[#F4AA44] rounded-tl-lg rounded-br-lg shadow-md text-xs sm:text-sm md:text-base font-bold z-50 
             opacity-100 transition-all duration-500 delay-100`}
             style={textZoomStyle}
           >
@@ -1157,7 +1174,7 @@ const Home = () => {
     },
     {
       id: 3,
-      name: 'Snehraj',
+      name: 'Snehraj Bose',
       role: 'Video Editor',
       image: snehraj
     },
@@ -1181,22 +1198,17 @@ const Home = () => {
     },
     {
       id: 7,
-      name: 'Mr.Sanjay Badhwar',
-      role: 'Admintration',
+      name: 'Sanjay Badhwar',
+      role: 'Admintration Officer ',
       image: sanjay
     },
     {
       id: 8,
-      name: 'Abhishek',
+      name: 'Abhishek Ranjan',
       role: 'SEO Engineer',
       image: abhishekh
     },
-    {
-      id: 9,
-      name: 'Rishabh',
-      role: 'Software Engineer',
-      image: rishab
-    }
+
   ];
 
   // First row: 5 members, Second row: 4 members
@@ -1299,19 +1311,18 @@ const Home = () => {
         {/* Mobile Toggle Button */}
         <div className="md:hidden">
           <button
-            className="p-2 text-black bg-white border border-black rounded-md"
+            className="p-2 text-[#F4AA41] bg-white border border-[#F4AA41] rounded-md"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-
         {/* Mobile Drawer */}
         <div
           className={`md:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 p-6 transition-transform duration-300 ease-in-out z-50 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
           <button
-            className="absolute p-2 text-black bg-white border border-white rounded-md top-5 right-5"
+            className="absolute p-2 text- bg-white border border-white rounded-md top-5 right-5"
             onClick={() => setIsOpen(false)}
           >
             <X size={28} />
@@ -1430,7 +1441,7 @@ const Home = () => {
             {/* Content with staggered animations */}
             <div className="overflow-hidden">
               <h2
-                className="my-1 md:mb-1 text-[28px] sm:text-xl md:text-3xl lg:text-[44px] font-medium text-gray-800 transform will-change-transform"
+                className="my-0 md:mb-0 text-[28px] sm:text-xl md:text-3xl lg:text-[44px] font-medium text-gray-800 transform will-change-transform"
                 style={{
                   opacity: contentRevealed ? 1 : 0,
                   transform: contentRevealed ? 'translateY(0)' : 'translateY(20px)',
@@ -1444,7 +1455,7 @@ const Home = () => {
 
             <div className="overflow-hidden">
               <h1
-                className="my-1 md:mb-1 py-0 md:py-3 text-[28px] leading-[32px] tracking-[0.04em] text-[#F4AA41] font-bold text-center sm:text-2xl md:text-4xl lg:text-4xl xl:text-[40px] 2xl:text-[50px] transform will-change-transform"
+                className="-mt-2 md:mt-0 md:mb-1 py-0 md:py-3 text-[28px] leading-[32px] tracking-[0.04em] text-[#F4AA41] font-bold text-center sm:text-2xl md:text-4xl lg:text-4xl xl:text-[40px] 2xl:text-[50px] transform will-change-transform"
                 style={{
                   opacity: contentRevealed ? 1 : 0,
                   transform: contentRevealed ? 'translateY(0)' : 'translateY(20px)',
@@ -1458,7 +1469,7 @@ const Home = () => {
 
             <div className="overflow-hidden">
               <p
-                className="mb-3 md:mb-5 text-[18px] leading-[24px] tracking-[0.04em] text-gray-700 font-light text-center sm:text-base md:text-lg lg:text-[35px] transform will-change-transform"
+                className="mb-3 md:mb-5 text-[15px] leading-[24px] tracking-[0.04em] text-gray-700 font-light text-center sm:text-sm md:text-lg lg:text-[35px] transform will-change-transform"
                 style={{
                   opacity: contentRevealed ? 1 : 0,
                   transform: contentRevealed ? 'translateY(0)' : 'translateY(20px)',
@@ -1537,6 +1548,7 @@ const Home = () => {
           Professional therapies for your mind, heart, and soul.
         </p>
       </div>
+
       {/* Counselling */}
       <div className="w-full py-2 bg-white">
         <div className="">
@@ -1562,12 +1574,11 @@ const Home = () => {
                     className="absolute inset-0 object-cover w-full h-full"
                   />
                   <div className="absolute inset-0 transition-all duration-300 bg-gradient-to-r">
-                    <div className="flex flex-col h-full p-4 text-left md:p-6">
-                      <h2 className="mb-2 text-xl font-bold text-white md:text-2xl md:mb-3">{service.title}</h2>
+                    <div className="flex flex-col h-full p-4 text-left my-5 md:p-6">
+                      <h2 className="mb-1 text-xl font-bold text-white md:text-2xl md:mb-1">{service.title}</h2>
                       <p className="w-[80%] md:w-[70%] text-sm md:text-base text-white text-opacity-90 line-clamp-6 md:line-clamp-6">
                         {service.description}
                       </p>
-
                     </div>
                   </div>
                 </div>
@@ -1596,8 +1607,8 @@ const Home = () => {
                     className="absolute inset-0 object-cover w-full h-full"
                   />
                   <div className="absolute inset-0 transition-all duration-300 bg-gradient-to-l">
-                    <div className="flex flex-col h-full p-4 text-left md:p-6 ">
-                      <h2 className="mb-2 text-xl font-bold text-white md:text-2xl md:mb-3">{service.title}</h2>
+                    <div className="flex flex-col h-full p-4 text-left my-5 md:p-6 ">
+                      <h2 className="mb-1 text-xl font-bold text-white md:text-2xl md:mb-1">{service.title}</h2>
                       <p className="w-[80%] md:w-[70%] text-sm md:text-base text-white text-opacity-90 line-clamp-6 md:line-clamp-6">
                         {service.description}
                       </p>
@@ -1787,7 +1798,7 @@ const Home = () => {
         </div>
 
         {/* Pagination Indicators - Enhanced with animations */}
-        <div className="flex justify-center gap-2 mt-6">
+        {/* <div className="flex justify-center gap-2 mt-6">
           {products.map((_, index) => {
             // Convert to original product index for highlighting the correct dot
             const originalIndex = ((safeActiveIndex % products.length) + products.length) % products.length;
@@ -1804,7 +1815,7 @@ const Home = () => {
               />
             );
           })}
-        </div>
+        </div> */}
       </div>
 
 
@@ -1858,7 +1869,7 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="max-w-7xl h-full mx-auto p-4">
+      <div className="w-full h-full mx-auto px-4 sm:px-8 md:px-14 lg:px-32 py-4">
         {/* First row - 2 cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <Card {...cards[0]} />
@@ -1873,11 +1884,12 @@ const Home = () => {
 
         {/* Third row - 1 centered card */}
         <div className="grid grid-cols-1 mb-6">
-          <div className="md:w-1/2 mx-auto">
+          <div className="md:w-1/2 w-full mx-auto">
             <Card {...cards[4]} />
           </div>
         </div>
       </div>
+
 
 
       {/* about us */}
@@ -1930,21 +1942,22 @@ const Home = () => {
 
       <div className="flex flex-col md:flex-row w-full h-[924px]">
         {/* Left Text Side */}
-        <div className="bg-[#F4AA41] flex flex-col text-left justify-center p-6 md:p-12 md:w-1/2 w-full rounded-tr-none md:rounded-tr-3xl">
-          <p className="text-black pl-10 text-base md:text-3xl mb-6">
-            <strong className='text-white'>WeEvolve</strong> is a global platform that bridges the gap between wellness professionals
+        <div className="bg-[#F4AA41] flex flex-col justify-center w-full rounded-tr-none md:rounded-tr-3xl px-4 sm:px-8 md:px-14 lg:px-24 py-4 sm:py-6 md:py-12 md:w-1/2">
+          <p className="text-black text-center md:text-left text-base md:text-3xl mb-6 md:pl-10">
+            <strong className="text-white">WeEvolve</strong> is a global platform that bridges the gap between wellness professionals
             (healers, therapists, and educators) and individuals seeking healing, growth, and personal development.
           </p>
-          <p className="text-black pl-10 text-base md:text-3xl mb-6">
-            <strong className='text-white'>Our Vision</strong> is to become the leading global platform that empowers both wellness professionals
+          <p className="text-black text-center md:text-left text-base md:text-3xl mb-6 md:pl-10">
+            <strong className="text-white">Our Vision</strong> is to become the leading global platform that empowers both wellness professionals
             and seekers, promoting holistic well-being, growth, and learning for all.
           </p>
-          <p className="text-black pl-10 text-base md:text-3xl">
-            <strong className='text-white'>Our Mission</strong> is to create a holistic ecosystem that connects wellness professionals and seekers,
+          <p className="text-black text-center md:text-left text-base md:text-3xl md:pl-10">
+            <strong className="text-white">Our Mission</strong> is to create a holistic ecosystem that connects wellness professionals and seekers,
             fostering meaningful relationships, educational opportunities, and personal transformation through cutting-edge
             technology and innovation.
           </p>
         </div>
+
 
         {/* Right Image Side */}
         <div className="md:w-1/2 w-full rounded-tl-none md:rounded-tl-3xl relative">
@@ -1953,9 +1966,9 @@ const Home = () => {
             alt="WeEvolve Mission"
             className="w-full h-full object-cover rounded-tl-none md:rounded-tl-3xl"
           />
-          <div className="absolute bottom-8 w-full text-center">
-            <h2 className="text-white font-bold text-xl md:text-2xl lg:text-5xl drop-shadow-lg mb-5">Nehha Lohiya</h2>
-            <p className="text-white text-base md:text-lg lg:text-2xl drop-shadow-lg">CEO & Founder</p>
+          <div className="absolute bottom-5 w-full text-center">
+            <h2 className="text-white font-bold text-2xl md:text-3xl lg:text-[38px] drop-shadow-lg mb-0 md:mb-4">Nehha Lohiya</h2>
+            <p className="text-white text-lg md:text-lg lg:text-[28px] drop-shadow-lg">CEO & Founder</p>
 
           </div>
         </div>
@@ -1964,58 +1977,44 @@ const Home = () => {
 
 
       {/* team section */}
-      <div className="w-full px-4 py-12 bg-white" ref={sectionRef}>
+      <div className="w-full px-4 py-0 md:py-12 mt-2 md:mt-0 bg-white" ref={sectionRef}>
         <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={sectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
-          >
-            
-            
+          <div>
             <div id="counselling" className="relative bg-white text-center w-full overflow-hidden px-4">
-        {/* Title with Background Image */}
-        <div className="relative flex justify-center items-center py-8 sm:py-8 md:py-10 lg:py-16 ">
-          
-          <h2
-            className="
-      text-center 
-      font-roboto font-bold text-gray-900 
-      max-w-[90%] md:max-w-2xl lg:max-w-4xl mx-auto
-      text-[24px] leading-[30px] tracking-wide
-      sm:text-[28px] sm:leading-[36px]
-      md:text-[32px] md:leading-[38px]
-      lg:text-[38px] lg:leading-[44px]
-      xl:text-[38px] xl:leading-[54px]
-    "
-          >
-           The Faces where Care Meets Expertise
-          </h2>
-        </div>
+              {/* Title with Background Image */}
+              <div className="relative flex justify-center items-center py-8 sm:py-8 md:py-10 lg:py-8 ">
+                <h2
+                  className="
+              text-center 
+              font-roboto font-bold text-gray-900 
+              max-w-[90%] md:max-w-2xl lg:max-w-4xl mx-auto
+              text-[24px] leading-[30px] tracking-wide
+              sm:text-[28px] sm:leading-[36px]
+              md:text-[32px] md:leading-[38px]
+              lg:text-[38px] lg:leading-[44px]
+              xl:text-[38px] xl:leading-[54px]
+            "
+                >
+                  The Faces where Care Meets Expertise
+                </h2>
+              </div>
 
-
-        <p
-          className="my-1 md:my-0 pb-5 text-bold leading-[24px] tracking-[0.04em] text-gray-700 font-light text-center sm:text-base md:text-lg lg:text-[30px] transform will-change-transform"
-          style={{
-            opacity: contentRevealed ? 1 : 0,
-            transform: contentRevealed ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease-in',
-            transitionDelay: '0.5s'
-          }}
-        >
-          Board Members
-        </p>
-      </div>
-
-          </motion.div>
+              <p
+                className="my-1 md:my-0 pb-8 text-xl leading-[24px] tracking-[0.04em] text-black font-semibold text-center sm:text-lg md:text-lg lg:text-[30px]"
+              >
+                Board Members
+              </p>
+            </div>
+          </div>
 
           {/* Desktop View */}
+          {/* Desktop View */}
           <div className="hidden md:block">
-            <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex flex-wrap justify-center gap-5">
               {staffProfiles.map((profile, index) => (
                 <motion.div
                   key={index}
-                  className="flex flex-col items-center w-56 cursor-pointer"
+                  className="flex flex-col items-center w-72 cursor-pointer"  // Increased width
                   whileHover={{ y: -10, transition: { duration: 0.3 } }}
                   onClick={() => handleTeamMemberClick(index)}
                   initial={{ opacity: 0, y: 20 }}
@@ -2026,7 +2025,7 @@ const Home = () => {
                     <img
                       src={profile.image}
                       alt={profile.name}
-                      className="object-cover w-full h-64"
+                      className="object-contain w-full h-auto sm:w-52 md:w-60 lg:w-64 rounded-lg"  // Increased image height
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-center text-black">
@@ -2040,109 +2039,75 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Mobile View with Slider */}
-          <div className="relative md:hidden">
-            <AnimatePresence>
 
-              <div className="overflow-hidden" ref={carouselContainerRef}>
-                <motion.div
-                  className="flex justify-center"
-                  initial={{ opacity: 0 }}
-                  animate={sectionInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ duration: 0.5 }}
+          {/* Updated Mobile View - No Animation, Full Size Images */}
+          <div className="md:hidden">
+            <div className="flex flex-col items-center space-y-15">
+              {staffProfiles.map((profile, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col mb-5 items-center w-full cursor-pointer"
+                  onClick={() => handleTeamMemberClick(index)}
                 >
-                  <div
-                    className="flex flex-col items-center w-64"
-                    onClick={() => handleTeamMemberClick(activeSlideIndex)}
-                  >
-                    <div className="mb-4 overflow-hidden rounded-lg shadow-md">
-                      <img
-                        src={staffProfiles[activeSlideIndex].image}
-                        alt={staffProfiles[activeSlideIndex].name}
-                        className="object-cover w-full h-64"
-                      />
-                    </div>
-                    <h3 className="text-xl font-semibold text-center text-purple-700">
-                      {staffProfiles[activeSlideIndex].name}
-                    </h3>
-                    <p className="text-sm text-center text-purple-600">
-                      {staffProfiles[activeSlideIndex].title}
-                    </p>
-                  </div>
-                </motion.div>
-
-                {/* Navigation Arrows */}
-                <button
-                  onClick={goToPrevSlide}
-                  className="absolute left-0 p-2 -translate-y-1/2 rounded-full shadow-md top-1/2 bg-white/70"
-                >
-                  <ChevronLeft size={24} className="text-purple-700" />
-                </button>
-                <button
-                  onClick={goToNextSlide}
-                  className="absolute right-0 p-2 -translate-y-1/2 rounded-full shadow-md top-1/2 bg-white/70"
-                >
-                  <ChevronRight size={24} className="text-purple-700" />
-                </button>
-
-                {/* Dots Indicator */}
-                <div className="flex justify-center gap-2 mt-4">
-                  {staffProfiles.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActiveSlideIndex(index)}
-                      className={`h-2 w-2 rounded-full transition-all duration-300 ${index === activeSlideIndex ? 'bg-purple-700 w-4' : 'bg-purple-300'
-                        }`}
+                  <div className="mb-4 overflow-hidden rounded-lg shadow-md">
+                    <img
+                      src={profile.image}
+                      alt={profile.name}
+                      className="w-full object-contain"
                     />
-                  ))}
+                  </div>
+                  <h3 className="text-xl font-semibold text-center text-black">
+                    {profile.name}
+                  </h3>
+                  <p className="text-sm text-center text-black">
+                    {profile.title}
+                  </p>
                 </div>
-              </div>
-
-            </AnimatePresence>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
 
       {/* team members */}
-      <div className="w-full bg-gray-50 py-10 px-4">
+      <div className="w-full py-10 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="relative text-center w-full overflow-hidden">
-
             {/* Title with Background Image */}
-            <div className="relative py-12 flex justify-center items-center">
-              <img
-                src={Vector}
-                alt="Background Infinity"
-                className="absolute w-40 h-32 object-contain"
-              />
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 z-10">
-                Meet Our Team
-              </h2>
-            </div>
-
+            <p
+              className="my-1 md:my-0 pb-10 text-2xl leading-[28px] tracking-[0.04em] text-black font-semibold text-center md:text-2xl lg:text-[30px] transform will-change-transform"
+              style={{
+                opacity: contentRevealed ? 1 : 0,
+                transform: contentRevealed ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease-in',
+                transitionDelay: '0.5s'
+              }}
+            >
+              Our Team
+            </p>
           </div>
 
-          {/* Desktop View: Two rows grid */}
+          {/* Desktop/Tablet View: Two rows grid - 4 members each row */}
           <div className="hidden sm:block">
-            {/* First row - 5 members */}
-            <div className="flex justify-center px-4 mb-8">
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-6xl w-full justify-items-center">
-                {firstRow.map((member) => (
+            {/* First row - 4 members */}
+            <div className="flex justify-center px-2 md:px-4 mb-8">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-0 w-full justify-items-center">
+                {teamMembers.slice(0, 4).map((member) => (
                   <div
                     key={member.id}
-                    className="overflow-hidden transition-transform duration-300 hover:-translate-y-2"
+                    className="overflow-hidden transition-transform duration-300 hover:-translate-y-2 w-full max-w-xs"
                   >
                     <div className="overflow-hidden flex justify-center">
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="object-contain w-60 h-60 rounded-lg"
+                        className="object-contain w-full h-auto sm:w-52 md:w-60 lg:w-60 rounded-lg"
                       />
                     </div>
                     <div className="p-2 text-center">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
-                      <p className="text-gray-600 text-base mb-2">{member.role}</p>
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                      <p className="text-gray-600 text-sm sm:text-base mb-2">{member.role}</p>
                     </div>
                   </div>
                 ))}
@@ -2150,23 +2115,23 @@ const Home = () => {
             </div>
 
             {/* Second row - 4 members */}
-            <div className="flex justify-center px-4">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl w-full justify-items-center">
-                {secondRow.map((member) => (
+            <div className="flex justify-center px-2 md:px-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-0 w-full justify-items-center">
+                {teamMembers.slice(4).map((member) => (
                   <div
                     key={member.id}
-                    className="overflow-hidden transition-transform duration-300 hover:-translate-y-2"
+                    className="overflow-hidden transition-transform duration-300 hover:-translate-y-2 w-full max-w-xs"
                   >
                     <div className="overflow-hidden flex justify-center">
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="object-contain w-60   h-60 rounded-lg"
+                        className="object-contain w-full h-auto sm:w-52 md:w-60 lg:w-60 rounded-lg"
                       />
                     </div>
                     <div className="p-2 text-center">
-                      <h3 className="text-base font-semibold text-gray-900 mb-1">{member.name}</h3>
-                      <p className="text-gray-600 text-sm mb-2">{member.role}</p>
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                      <p className="text-gray-600 text-sm sm:text-base mb-2">{member.role}</p>
                     </div>
                   </div>
                 ))}
@@ -2174,9 +2139,10 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Mobile View: Slider */}
+
+          {/* Mobile View: Slider with larger images */}
           <div className="sm:hidden">
-            <div className="relative px-4" ref={sliderRef}>
+            <div className="relative" ref={sliderRef}>
               <div className="overflow-hidden">
                 <div
                   className="flex transition-transform duration-500 ease-in-out"
@@ -2185,18 +2151,18 @@ const Home = () => {
                   {teamMembers.map((member) => (
                     <div
                       key={member.id}
-                      className="w-full flex-shrink-0 px-4"
+                      className="w-full flex-shrink-0 px-2"
                     >
                       <div className="overflow-hidden flex justify-center">
                         <img
                           src={member.image}
                           alt={member.name}
-                          className="object-contain w-48 h-48 rounded-lg"
+                          className="object-contain w-full h-auto max-w-64 rounded-lg"
                         />
                       </div>
-                      <div className="p-2 text-center">
-                        <h3 className="text-base font-semibold text-gray-900 mb-1">{member.name}</h3>
-                        <p className="text-gray-600 text-sm mb-2">{member.role}</p>
+                      <div className="p-2 text-center mt-2">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                        <p className="text-gray-600 text-base mb-2">{member.role}</p>
                       </div>
                     </div>
                   ))}
@@ -2204,35 +2170,37 @@ const Home = () => {
               </div>
 
               {/* Slider Controls */}
-              <div className="flex justify-center mt-4 gap-2">
-                <button
+              <div className="flex justify-center mt-6 gap-3">
+                {/* <button
                   onClick={handlePrev}
-                  className="p-2 bg-gray-200 rounded-full"
+                  className="p-3 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors"
+                  aria-label="Previous team member"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
                   </svg>
-                </button>
+                </button> */}
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   {teamMembers.map((_, index) => (
                     <span
                       key={index}
-                      className={`block h-2 w-2 rounded-full ${currentSlide === index ? 'bg-blue-500' : 'bg-gray-300'
-                        }`}
+                      className={`block h-3 w-3 rounded-full cursor-pointer ${currentSlide === index ? 'bg-[#F4aa41]' : 'bg-gray-300'}`}
                       onClick={() => setCurrentSlide(index)}
+                      aria-label={`Go to team member ${index + 1}`}
                     ></span>
                   ))}
                 </div>
 
-                <button
+                {/* <button
                   onClick={handleNext}
-                  className="p-2 bg-gray-200 rounded-full"
+                  className="p-3 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors"
+                  aria-label="Next team member"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                   </svg>
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -2241,7 +2209,36 @@ const Home = () => {
 
 
       {/* review */}
-      <div className="w-full p-4 bg-white py-12 sm:py-16 md:py-20 overflow-hidden">
+      <div id="counselling" className="relative bg-white text-center w-full overflow-hidden px-4">
+        {/* Title with Background Image */}
+        <div className="relative flex justify-center items-center py-8 sm:py-8 md:py-10 lg:py-16">
+          <img
+            src={Vector}
+            alt="Background Infinity"
+            className="
+      absolute 
+      w-[194px] h-[100px] 
+      sm:w-24 sm:h-24 
+      md:w-72 md:h-24 
+      lg:w-[330px] lg:h-24 
+      xl:w-[350px] xl:h-[170px] 
+      object-contain
+    "
+          />
+          <h2 className="text-center font-bold text-gray-900 max-w-[90%] md:max-w-2xl lg:max-w-3xl mx-auto
+      text-[24px] leading-[30px] tracking-wide
+      sm:text-[28px] sm:leading-[36px]
+      md:text-[32px] md:leading-[38px]
+      lg:text-[38px] lg:leading-[44px]
+      xl:text-[38px] xl:leading-[54px]">
+            Over <span className="text-[#F4AA41]">50,000{count.toString().padStart(3, '0')}</span> family and counting
+          </h2>
+        </div>
+
+
+      </div>
+
+      <div className="w-full p-4 pt-5 md:pt-10 bg-white py-0 sm:py-6 md:py-0 overflow-hidden">
         {/* First row container */}
         <div className="w-full overflow-hidden mb-8 sm:mb-10 pb-10">
           <div style={getRowScrollStyle(1)} className="flex">
@@ -2280,28 +2277,28 @@ const Home = () => {
                 {/* <div className="text-amber-200/30 text-5xl sm:text-6xl md:text-8xl font-bold mb-2">∞</div> */}
 
                 {/* Main heading with improved responsive text sizes */}
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 pt-8 mb-3 sm:mb-4">
+                <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 pt-8 mb-5 sm:mb-8">
                   <span className="block sm:inline">World's Largest</span>{" "}
                   <span className="block sm:inline">Wellness Universe is</span>
-                  <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-1 sm:mt-2">
+                  <span className="block text-5xl sm:text-4xl md:text-5xl lg:text-6xl mt-1 sm:mt-2">
                     Coming Soon..
                   </span>
                 </h1>
 
                 {/* Subheading */}
-                <h2 className="text-lg sm:text-xl md:text-3xl font-semibold text-gray-800 mb-4 sm:mb-6">
+                <h2 className="text-lg sm:text-xl md:text-3xl font-bold text-gray-800 mb-0 sm:mb-1">
                   Join our waiting list &
                 </h2>
 
                 {/* Description text */}
-                <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-6 sm:mb-8">
+                <p className="text-sm sm:text-base md:text-xl text-gray-900 mb-6 sm:mb-8">
                   Signup Below to receive updates and to be notified when we launch!
                 </p>
 
                 {/* Form with responsive width and better mobile display */}
                 <form
                   onSubmit={handleSubmit}
-                  className="flex w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto"
+                  className="flex w-full max-w-xs sm:max-w-sm md:max-w-2xl mx-auto"
                   style={{
                     boxShadow: "-4px 6px 5px rgba(0, 0, 0, 0.2)"
                   }}
@@ -2343,21 +2340,20 @@ const Home = () => {
 
 
       {/* redy to evolve */}
-      <div className="relative flex items-center justify-center min-h-[50vh] bg-white px-4 md:px-8 lg:px-16 overflow-hidden">
+      <div className="relative flex items-center justify-center min-h-[30vh] md:min-h-[60vh] bg-white px-4 md:px-8 lg:px-16 overflow-hidden">
         <img
-          src={Vector2}
+          src={Vector}
           alt="Spiritual counseling with astrology chart"
-          className="absolute inset-0 mx-auto my-auto w-32 sm:w-48 md:w-72 lg:w-96 h-auto object-contain"
+          className="absolute inset-0 mx-auto my-auto w-[300px] sm:w-[400px] md:w-[400px] lg:w-[650px] h-auto object-contain"
         />
         <div className="relative text-center z-10">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[75px] font-bold text-black leading-tight">
             Ready to Evolve?
           </h1>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed">
-            <span className="font-bold text-black">Manifest Your Best Life</span> with the best Counsellors,
-            <br className="hidden sm:block" />
-            healers, therapists & educators.
+          <p className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl lg:text-3xl w-[300px] sm:w-[400px] md:w-[500px] lg:w-[750px] text-gray-700 leading-[1.6]">
+            <span className="font-bold text-black">Manifest Your Best Life</span> with best Counsellors, Healers, Therapist, Coaches, Educators, Services, Products, Retreats, Festivals, Courses, Corporate wellness programs, Community.
           </p>
+
         </div>
       </div>
 
@@ -2384,16 +2380,16 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="bg-[#F4AA41] text-black">
-        <div className="container py-14 mx-auto px-4 sm:px-8 md:px-14 lg:px-32">
+        <div className="container py-14 mx-auto px-4 sm:px-8 md:px-14 lg:px-28">
           <div className="flex flex-col items-start justify-between md:flex-row">
-            <div className="flex items-center px-4 py-2 space-x-4 md:py-0">
-              <img src={logo} alt="WeEvolve Logo" className="h-16 md:h-32" />
+            <div className="flex items-center px- py-2 space-x-4 md:py-0">
+              <img src={logo} alt="WeEvolve Logo" className="h- md:h-32" />
             </div>
 
             <div className="mb-6 text-left md:mb-0">
               <div className="flex items-center mb-2">
                 <MapPin size={18} className="mr-2" />
-                <span>411, Westport, Pancardi Rd, Baner, Pune</span>
+                <span>411, Westport, Pancard Rd, Baner, Pune</span>
               </div>
               <div className="flex items-center mb-2">
                 <Phone size={18} className="mr-2" />
@@ -2403,7 +2399,7 @@ const Home = () => {
                 <Globe size={18} className="mr-2" />
                 <span>WeEvolve.ai</span>
               </div>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 pb-5">
                 <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-200">
                   <Facebook size={20} />
                 </a>
@@ -2430,10 +2426,10 @@ const Home = () => {
             </div>
 
             <div className="text-left">
-              <h3 className="mb-4 text-lg font-semibold">Subscribe to WeEvolve Newsletters</h3>
+              <h3 className="mb-2 text-lg font-semibold">Subscribe to WeEvolve Newsletters</h3>
               <div className="flex"
                 style={{
-                  boxShadow: "-6px 8px 5px rgba(0, 0, 0, 0.3)"
+                  boxShadow: "0px 4px 5px rgba(0, 0, 0, 0.3)"
                 }}
               >
                 <input
@@ -2450,10 +2446,10 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="px-6 py-4 border-t border-black md:px-16">
-          <div className="container flex flex-col items-start justify-between mx-auto md:flex-row md:items-center">
+        <div className="px-6 py-4 md:px-16">
+          <div className="container flex flex-col justify-between mx-auto md:flex-row items-center md:items-center">
             <div className="mb-2 text-sm md:mb-0">
-              © 2022 ABC. All rights reserved.
+              © 2025 ABC. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="hover:text-purple-200">Terms</a>
