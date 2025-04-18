@@ -10,7 +10,7 @@ import logo from '../assets/evolve.png'
 import footer from '../assets/footer.png'
 import Vector from "../assets/Vector.png";
 import Vector2 from "../assets/Vector2.png";
-// import wellness from "../assets/well.mov";
+import well from "../assets/wall.mp4";
 import Astrology from "../assets/service/Astrology.png";
 import dance from "../assets/service/dance.png";
 import chakra from "../assets/service/chakra.png";
@@ -171,7 +171,29 @@ const Home = () => {
     }
   };
 
+  // carosoul
 
+  // Scroll to section function
+  const [videoRevealed, setVideoRevealed] = useState(false);
+  const [contentRevealed, setContentRevealed] = useState(false);
+
+  // Animation sequence timing
+  useEffect(() => {
+    // Start video animation after a small delay
+    const videoTimer = setTimeout(() => {
+      setVideoRevealed(true);
+    }, 500);
+
+    // Start content reveal after video has started its animation
+    const contentTimer = setTimeout(() => {
+      setContentRevealed(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(videoTimer);
+      clearTimeout(contentTimer);
+    };
+  }, []);
   // couseling 
 
   const counselingServices = [
@@ -1171,28 +1193,30 @@ const Home = () => {
   return (
     <div>
       {/* nav */}
-      <nav className="fixed top-0 z-50 flex items-center justify-between w-full h-[100px] px-4 sm:px-8 md:px-14 lg:px-32 py-4 font-medium text-black bg-white shadow-md">
+      <nav className="fixed top-0 z-50 flex items-center justify-between w-full h-[100px] px-4 sm:px-8 md:px-14 lg:px-32 py-4 font-medium text-white  shadow-none ">
+
         {/* Logo - Left */}
         <div className="flex items-center">
           <img
             src={logo}
             alt="WeEvolve Logo"
-            className="h-20 p-2 border border-yellow-500 rounded-lg"
+            className="h-20    border-1 sm:border sm:border-yellow-500 rounded-lg"
           />
         </div>
+
 
         {/* Spacer */}
         <div className="flex-grow"></div>
 
         {/* Desktop Nav - Right */}
         <div className="items-center justify-end hidden space-x-12 text-lg font-semibold md:flex">
-          <a href="#home" onClick={(e) => scrollToSections(e, 'home')} className="hover:text-purple-600">
+          <a href="#home" onClick={(e) => scrollToSections(e, 'home')} className="hover:text-yellow-600">
             Home
           </a>
-          <a href="#about" onClick={(e) => scrollToSections(e, 'about')} className="hover:text-purple-600">
+          <a href="#about" onClick={(e) => scrollToSections(e, 'about')} className="hover:text-yellow-600">
             About Us
           </a>
-          <a href="#contact" onClick={(e) => scrollToSections(e, 'contact')} className="hover:text-purple-600">
+          <a href="#contact" onClick={(e) => scrollToSections(e, 'contact')} className="hover:text-yellow-600">
             Contact Us
           </a>
 
@@ -1202,21 +1226,21 @@ const Home = () => {
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
               className="flex items-center px-3 py-2 rounded hover:bg-purple-100"
             >
-              <span className="text-black">En</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <span className="text-white">En</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
 
             {isLangMenuOpen && (
               <div className="absolute right-0 z-20 w-32 py-1 mt-2 text-white bg-black rounded-md shadow-lg bg-opacity-90">
-                <button onClick={() => changeLanguage('en')} className="block w-full px-4 py-2 text-sm text-left hover:bg-purple-800">
+                <button onClick={() => changeLanguage('en')} className="block w-full px-4 py-2 text-sm text-left hover:bg-yellow-800">
                   English
                 </button>
-                <button onClick={() => changeLanguage('hi')} className="block w-full px-4 py-2 text-sm text-left hover:bg-purple-800">
+                <button onClick={() => changeLanguage('hi')} className="block w-full px-4 py-2 text-sm text-left hover:bg-yellow-800">
                   हिंदी
                 </button>
-                <button onClick={() => changeLanguage('mr')} className="block w-full px-4 py-2 text-sm text-left hover:bg-purple-800">
+                <button onClick={() => changeLanguage('mr')} className="block w-full px-4 py-2 text-sm text-left hover:bg-yellow-800">
                   मराठी
                 </button>
               </div>
@@ -1269,46 +1293,85 @@ const Home = () => {
 
       {/* carosoul */}
       {/* Hero Section with Improved Video Background */}
-      <div className="relative h-screen w-full overflow-hidden flex flex-col justify-center items-center">
-        {/* Background video - Improved responsive implementation */}
+      <div className="relative h-screen w-full overflow-hidden bg-black">
+        {/* Video with reveal animation */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
+          {/* Video container */}
           <div className="relative h-full w-full overflow-hidden">
-            <div className="video-container absolute inset-0">
-              <iframe
-                src="https://www.youtube.com/embed/hlWiI4xVXKY?autoplay=1&mute=1&loop=1&playlist=hlWiI4xVXKY&controls=0&modestbranding=1&showinfo=0&rel=0"
-                title="YouTube Video Background"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto aspect-video object-cover"
+            <div
+              className="video-container absolute inset-0"
+              style={{
+                backgroundColor: 'white',
+                clipPath: videoRevealed
+                  ? `polygon(0 0, 100% 0, 100% ${contentRevealed ? '70%' : '100%'}, 0 ${contentRevealed ? '70%' : '100%'})`
+                  : 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+                transition: 'clip-path 1.8s ease-in-out'
+              }}
+            >
+              {/* Dark overlay */}
+              <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
+
+              {/* YouTube video */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover"
                 style={{
                   width: "177.77777778vh", /* 16:9 aspect ratio */
-                  height: "56.25vw", /* 16:9 aspect ratio */
+                  height: "76.25vw", /* 16:9 aspect ratio - using your specified value */
                   minWidth: "100%",
                   minHeight: "100%"
                 }}
-              ></iframe>
+              >
+                <source src={well} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
 
-        {/* Rest of your content remains the same */}
-        <div className="relative z-20 w-full max-w-6xl px-4 text-center flex flex-col justify-center h-full">
-          <h2 className="mb-2 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white">
-            Welcome to
-          </h2>
-          <h1 className="mb-6 sm:mb-8 md:mb-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F4AA41] leading-tight">
-            World's Largest Health & Wellness Universe
-          </h1>
+        {/* Gradient fade transition between video and white section */}
+        {/* <div 
+        className="absolute left-0 right-0 z-5"
+        style={{
+          height: '100px',
+          bottom: contentRevealed ? '35%' : '-100px',
+          transition: 'bottom 1.8s ease-in-out',
+          borderTopLeftRadius: '80px',
+          borderTopRightRadius: '80px',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,1) 100%)'
+        }}
+      ></div> */}
 
-          {/* Navigation Tabs */}
-          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-3 max-w-full px-1 sm:px-4 md:px-8">
+
+        {/* Content area with white background that reveals from bottom */}
+        <div
+          className="absolute bottom-0 left-0 right-0 bg-white"
+          style={{
+            height: contentRevealed ? '32%' : '0%',
+            transition: 'height 1.8s ease-in-out',
+          }}
+        >
+          {/* This is just the white background that rises up */}
+        </div>
+
+        {/* Navigation Tabs positioned just above the rising white section */}
+        <div
+          className="absolute left-0 right-0 z-30 flex justify-center"
+          style={{
+            bottom: contentRevealed ? '35%' : '-100px',
+            transition: 'bottom 1.8s ease-in-out',
+            transitionDelay: '0.2s'
+          }}
+        >
+          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 md:gap-3 py-2 px-4 rounded-full shadow-lg">
             {navItems.map((item) => (
               <button
                 key={item.id}
-                className="relative py-1 px-2 sm:py-2 sm:px-4 md:py-3 md:px-5 text-gray-800 bg-white rounded-md font-medium text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:bg-[#f6d5a7] focus:outline-none
-          after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-0 after:h-[2px] after:bg-[#b77f31] hover:after:w-full after:transition-all after:duration-300 hover:rounded-t-md hover:rounded-b-none"
+                className="relative py-1 px-2 sm:py-2 sm:px-3 text-gray-800 bg-white hover:bg-gray-100 border border-gray-400 rounded-md font-medium text-xs sm:text-sm md:text-base transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg focus:outline-none
+              after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:w-0 after:h-[2px] after:bg-yellow-500 hover:after:w-full after:transition-all after:duration-300"
                 onClick={() => {
                   setActiveTab(item.id);
                   scrollToSection(item.id);
@@ -1320,35 +1383,70 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Tagline */}
-        <div className="absolute bottom-10 sm:bottom-12 md:bottom-14 left-0 right-0 z-20 text-center px-4">
-          <p className="text-sm sm:text-base md:text-lg lg:text-2xl xl:text-3xl text-white font-medium">
-            Empowering you to manifest your best life.
-          </p>
-        </div>
+        {/* Main content that appears in the white section */}
+        <div
+          className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-center"
+          style={{
+            height: '30%',
+            opacity: contentRevealed ? 1 : 0,
+            transform: contentRevealed ? 'translateY(0)' : 'translateY(50px)',
+            transition: 'opacity 0.8s ease-in-out, transform 0.8s ease-in-out',
+            transitionDelay: '0.9s'
+          }}
+        >
+         <div className="w-full max-w-6xl px-4 text-center mx-auto">
+  <h2 className="mb-2 text-base sm:text-lg md:text-2xl lg:text-3xl font-medium text-gray-800">
+    Welcome to
+  </h2>
+  <h1 className="mb-6 text-xl sm:text-2xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-yellow-600 leading-tight">
+    World's Largest Health & Wellness Universe
+  </h1>
 
-        {/* Curved transition */}
-        <div className="absolute bottom-0 left-0 right-0 w-full z-10">
-          <div className="flex w-full">
-            <div className="w-1/2 h-4 sm:h-6 bg-white rounded-tr-full"></div>
-            <div className="w-1/2 h-4 sm:h-6 bg-white rounded-tl-full"></div>
-          </div>
+  <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 font-medium">
+    Empowering you to manifest your best life.
+  </p>
+
+  <button className="mt-6 px-6 py-2 sm:px-8 sm:py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-full shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+    Start Your Journey
+  </button>
+</div>
+
         </div>
       </div>
-
+      <hr />
       {/* Services Section */}
       <div id="counselling" className="relative bg-white text-center w-full overflow-hidden px-4">
         {/* Title with Background Image */}
-        <div className="relative py-6 sm:py-8 md:py-10 lg:py-12 flex justify-center items-center">
+        <div className="relative flex justify-center items-center py-8 sm:py-8 md:py-10 lg:py-20">
           <img
             src={Vector}
             alt="Background Infinity"
-            className="absolute w-16 h-16 sm:w-24 sm:h-24 md:w-72 md:h-24 lg:w-[330px] lg:h-24 xl:w-[350px] xl:h-28 object-contain"
+            className="
+      absolute 
+      w-[194px] h-[100px] 
+      sm:w-24 sm:h-24 
+      md:w-72 md:h-24 
+      lg:w-[330px] lg:h-24 
+      xl:w-[350px] xl:h-[170px] 
+      object-contain
+    "
           />
-          <h2 className="text-base sm:text-xl md:text-3xl lg:text-[38px] xl:text-[36px] font-bold text-gray-900 z-10 max-w-[90%] md:max-w-2xl lg:max-w-3xl mx-auto">
+          <h2
+            className="
+      text-center 
+      font-roboto font-bold text-gray-900 
+      max-w-[90%] md:max-w-2xl lg:max-w-3xl mx-auto
+      text-[24px] leading-[30px] tracking-wide
+      sm:text-[28px] sm:leading-[36px]
+      md:text-[32px] md:leading-[38px]
+      lg:text-[38px] lg:leading-[44px]
+      xl:text-[48px] xl:leading-[54px]
+    "
+          >
             Our Counselling Services
           </h2>
         </div>
+
 
         {/* Subtitle */}
         <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900">
